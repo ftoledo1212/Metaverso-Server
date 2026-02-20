@@ -9,6 +9,11 @@ const io = require('socket.io')(server, {
     }
 });
 
+// Adicionámos esta rota para ter feedback visual de que o servidor está vivo!
+app.get('/', (req, res) => {
+    res.send('<h1>Servidor do Metaverso Online e a correr perfeitamente! 🚀</h1>');
+});
+
 let players = {};
 
 io.on('connection', (socket) => {
@@ -52,5 +57,5 @@ io.on('connection', (socket) => {
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
-    console.log(`Servidor rodando na porta ${PORT}`);
+    console.log(`Servidor a correr na porta ${PORT}`);
 });
